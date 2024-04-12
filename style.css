@@ -1,22 +1,131 @@
+
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  #fetchCurrenciesButton {
-    margin-bottom: 20px;
-  }
-  
-  #currenciesList {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #currenciesList li {
-    margin-bottom: 5px;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+main {
+  text-align: center; 
+}
+nav {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.7); 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input[type="text"],
+button {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; 
+}
+
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#error {
+  margin-bottom: 10px;
+}
+
+#loading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#currencies-list {
+  margin-top: 20px;
+}
+
+.currency-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#searched-countries {
+  margin-top: 20px; 
+}
+
+#searched-list {
+  list-style: none;
+  padding: 0;
+}
+
+.searched-item {
+  margin-bottom: 5px; 
+}
+
+.searched-item button {
+  margin-left: 10px; 
+}
+
+
+.searched-item button {
+  margin-left: 10px; 
+  background-color: blue; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 5px 10px; 
+  cursor: pointer; 
+}

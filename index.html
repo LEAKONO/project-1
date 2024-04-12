@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coinbase Currencies</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Crypto Currency Viewer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Coinbase Currencies</h1>
-        <button id="fetchCurrenciesButton">Fetch Currencies</button>
-        <ul id="currenciesList"></ul>
-      </div>
-      <script src="script.js"></script>
+    <header>
+        <h1>Crypto Currency Viewer</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="home">Home</a></li>
+                <li><a href="#" id="about">About</a></li>
+                <li><a href="#" id="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+      <section id="crypto-list">
+          <!-- Crypto currencies will be dynamically added here -->
+      </section>
+      <section id="filter-form">
+          <h2>Filter Currencies</h2>
+          <form>
+              <input type="text" id="filter-input" placeholder="Search currencies...">
+              <button type="submit">submit</button>
+          </form>
+      </section>
+      <section id="searched-countries">
+          <h2>Searched Countries</h2>
+          <ul id="searched-list">
+              <!-- Searched countries will be added here -->
+          </ul>
+      </section>
+  </main>
+  
+
+    <footer>
+        <p>&copy; 2024 Crypto Currency Viewer</p>
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>

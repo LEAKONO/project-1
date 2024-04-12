@@ -1,39 +1,71 @@
-document.getElementById('fetchCurrenciesButton').addEventListener('click', () => {
-    const countryName = prompt('Enter the name of the country to fetch currencies for:');
-    if (countryName) {
-      fetchCurrenciesByCountry(countryName);
-    }
-  });
-  
-  function fetchCurrenciesByCountry(countryName) {
-    const apiUrl = 'https://api.coinbase.com/v2/currencies';
-  
-    fetch(apiUrl)
+document.addEventListener('DOMContentLoaded', function() {
+  // Fetch data from the API
+  fetch('https://api.coinbase.com/v2/currencies')
       .then(response => response.json())
       .then(data => {
-        const countryCurrencies = CurrenciesByCountry(data.data, countryName);
-        displayCurrencies(countryCurrencies);
-      })
-      .catch(error => {
-        console.error('Error fetching currencies:', error);
+          // Process the data and display it
+          displayCurrencies(data.data);
       });
-  }
-  
-  function CurrenciesByCountry(currencies, countryName) {
-    return currencies.filter(currency => {
-      
-      
-      return currency.name.toLowerCase().includes(countryName.toLowerCase());
-    });
-  }
-  
-  function displayCurrencies(currencies) {
-    const currenciesList = document.getElementById('currenciesList');
-    currenciesList.innerHTML = '';
-  
-    currencies.forEach(currency => {
-      const listItem = document.createElement('li');
-      listItem.textContent = currency.name;
-      currenciesList.appendChild(listItem);
-    });
-  }
+
+  // Event listener for the filter form
+  document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      const filterValue = document.getElementById('filter-input').value.toLowerCase();
+      filterCurrencies(filterValue);
+      addToSearchedList(filterValue);
+  });
+
+  // Event listener for navigation
+  document.getElementById('home').addEventListener('click', function(event) {
+      event.preventDefault();
+      alert('You clicked Home!');
+  });
+
+  document.getElementById('about').addEventListener('click', function(event) {
+      event.preventDefault();
+      alert('You clicked About!');
+  });
+
+  document.getElementById('contact').addEventListener('click', function(event) {
+      event.preventDefault();
+      alert('You clicked Contact!');
+  });
+});
+
+function displayCurrencies(currencies) {
+  const cryptoList = document.getElementById('crypto-list');
+  cryptoList.innerHTML = ''; // Clear previous content
+  currencies.forEach(currency => {
+      const currencyItem = document.createElement('div');
+      currencyItem.textContent = currency.name;
+      currencyItem.style.display = 'none'; 
+      currencyItem.setAttribute('class', 'currency-item'); 
+      cryptoList.appendChild(currencyItem);
+  });
+}
+
+function filterCurrencies(filterValue) {
+  const currencies = document.querySelectorAll('.currency-item');
+  currencies.forEach(currency => {
+      const name = currency.textContent.toLowerCase();
+      if (name.includes(filterValue)) {
+          currency.style.display = 'block';
+      } else {
+          currency.style.display = 'none';
+      }
+  });
+}
+
+function addToSearchedList(countryName) {
+  const searchedList = document.getElementById('searched-list');
+  const listItem = document.createElement('li');
+  listItem.textContent = countryName;
+  listItem.setAttribute('class', 'searched-item');
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', function() {
+      listItem.remove();
+  });
+  listItem.appendChild(deleteButton);
+  searchedList.appendChild(listItem);
+}
